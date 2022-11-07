@@ -10,7 +10,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Cut-me-up',
+            title: 'Klipp Mig',
         }),
     ],
     output: {
