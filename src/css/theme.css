@@ -1,0 +1,32 @@
+:root
+{
+    --black: #131314;
+    --white: #fff;
+    --pink: radial-gradient(circle, rgba(235,18,122,1) 0%, rgba(252,70,107,1) 100%);
+    --grey: #D6D6E0;
+    --light-purple: #E5E5F4;
+}
+
+@font-face
+{
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: normal;
+    src: url("./../fonts/Source_Sans_3/SourceSans3-Regular.ttf");
+}
+
+@font-face
+{
+    font-family: 'Source Sans 3';
+    font-style: normal;
+    font-weight: bold;
+    src: url("./../fonts/Source_Sans_3/SourceSans3-Bold.ttf");
+}
+
+@font-face
+{
+    font-family: 'Permanent Market';
+    font-style: normal;
+    font-weight: normal;
+    src: url("./../fonts/Permanent_Marker/PermanentMarker-Regular.ttf");
+}

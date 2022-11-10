@@ -77,7 +77,8 @@ const init = () =>
 
     root.insertAdjacentHTML(`afterbegin`,`
         <a href="/" title="Framsida">Framsida</a>
-        <a href="/kontakt" title="Kontakta oss">Kontakt</a>`);
+        <a href="/kontakt" title="Kontakta oss">Kontakt</a>
+        <a href="/om-oss" title="Om oss">Om oss</a>`);
 }
 
 // Initierar SPA genom INIT.
@@ -89,17 +90,7 @@ window.onload = () =>
 
     init();
 
-    document.querySelectorAll('a').forEach(a =>
-    {
-        a.addEventListener('click', (e) =>
-        {
-            e.preventDefault();
-            history.replaceState(null, null, e.target.href);
-            update();
-        })
-    });
-
-    history.pushState(null, null, window.location);
+    history.replaceState(null, null, window.location);
 
     update();
 
@@ -108,6 +99,18 @@ window.onload = () =>
 // I princip: Webbläsar-pilar.
 window.onpopstate = (e) =>
 {
+    e.preventDefault();
+    history.replaceState(null, null, window.location);
     update();
+}
+
+window.onclick = (e) =>
+{
+    if (e.target.tagName == 'A' && e.target.target != '_blank')
+    {
+        e.preventDefault();
+        history.pushState(null, null, new URL(e.target.href));
+        update();
+    }
 }
 
