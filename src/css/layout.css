@@ -1,0 +1,34 @@
+#root
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: clamp(2rem, 2.5vw, 4rem);
+    min-height: 100vh;
+}
+
+#main
+{
+    flex: 1;
+}
+
+#footer .wrapper
+{
+    text-align: center;
+}
+
+#header, #main ,#footer
+{
+    display: grid;
+    grid-auto-columns: minmax(1rem, 10vw) 1fr minmax(1rem, 10vw);
+    grid-template-rows: 1fr;
+    grid-template-areas: '. wrapper .';
+}
+
+#header .wrapper
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-block: 1rem;
+}

@@ -1,0 +1,5 @@
+.brand_link:hover ~ .brand_logotype,
+.brand_link:focus ~ .brand_logotype
+{
+    color: var(--pink);
+}

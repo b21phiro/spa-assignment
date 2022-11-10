@@ -2,7 +2,8 @@
 {
     --black: #131314;
     --white: #fff;
-    --pink: radial-gradient(circle, rgba(235,18,122,1) 0%, rgba(252,70,107,1) 100%);
+    --pink-gradient: radial-gradient(circle, rgba(235,18,122,1) 0%, rgba(252,70,107,1) 100%);
+    --pink: #EC0F5E;
     --grey: #D6D6E0;
     --light-purple: #E5E5F4;
 }
@@ -12,7 +13,7 @@
     font-family: 'Source Sans 3';
     font-style: normal;
     font-weight: normal;
-    src: url("./../fonts/Source_Sans_3/SourceSans3-Regular.ttf");
+    src: url("./../fonts/Source_Sans_3/SourceSans3-Regular.ttf") format('truetype');
 }
 
 @font-face
@@ -20,13 +21,13 @@
     font-family: 'Source Sans 3';
     font-style: normal;
     font-weight: bold;
-    src: url("./../fonts/Source_Sans_3/SourceSans3-Bold.ttf");
+    src: url("./../fonts/Source_Sans_3/SourceSans3-Bold.ttf") format('truetype');
 }
 
 @font-face
 {
-    font-family: 'Permanent Market';
+    font-family: 'Permanent Marker';
     font-style: normal;
     font-weight: normal;
-    src: url("./../fonts/Permanent_Marker/PermanentMarker-Regular.ttf");
+    src: url("./../fonts/Permanent_Marker/PermanentMarker-Regular.ttf") format('truetype');
 }

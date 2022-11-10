@@ -7,6 +7,9 @@ import './css/layout.css';
 
 // All js importeras här.
 import * as router from './js/router.js';
+import main from './js/main.js';
+import header from './js/header.js';
+import footer from './js/footer.js';
 
 // Lägger in alla valida-rutter hos routern.
 router.addRoute
@@ -42,7 +45,7 @@ const update = async () =>
     {
         const page = await result.page;
         documentTitle(result.title);
-        page.default(document.getElementById('main'));
+        page.default(document.getElementById('main').children[0]);
     }
 }
 
@@ -50,9 +53,10 @@ const update = async () =>
 const clearMain = () =>
 {
     const main = document.getElementById('main');
-    while(main.firstChild)
+    const wrapper = main.children[0];
+    while(wrapper.firstChild)
     {
-        main.removeChild(main.lastChild);
+        wrapper.removeChild(wrapper.lastChild);
     }
 }
 
@@ -69,16 +73,11 @@ const init = () =>
     const root = document.createElement('DIV');
           root.id = "root";
 
-    const main = document.createElement('MAIN');
-          main.id = "main";
-
     document.body.appendChild(root);
-    root.appendChild(main);
 
-    root.insertAdjacentHTML(`afterbegin`,`
-        <a href="/" title="Framsida">Framsida</a>
-        <a href="/kontakt" title="Kontakta oss">Kontakt</a>
-        <a href="/om-oss" title="Om oss">Om oss</a>`);
+    header(root);
+    main(root);
+    footer(root);
 }
 
 // Initierar SPA genom INIT.
