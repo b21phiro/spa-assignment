@@ -1,6 +1,39 @@
 #root
 {
     display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    row-gap: clamp(2rem, 2.5vw, 4rem);
+}
+
+#header
+{
+    padding-block: 1rem;
+}
+
+#main
+{
+    flex: 1;
+}
+
+.wrapper
+{
+    grid-area: wrapper;
+}
+
+#header,
+#main,
+#footer
+{
+    display: grid;
+    grid-template-columns: minmax(1rem, 10vw) 1fr minmax(1rem, 10vw);
+    grid-template-rows: 1fr;
+    grid-template-areas:
+    '. wrapper .';
+}
+#root
+{
+    display: flex;
     flex-direction: column;
     row-gap: clamp(2rem, 2.5vw, 4rem);
     min-height: 100vh;

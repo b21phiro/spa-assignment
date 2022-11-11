@@ -1,12 +1,10 @@
 const html = `
 <footer id="footer">
-    <div class="wrapper">
-        <p class="author">b21phiro</p>
-    </div>
+    <div class="wrapper"></div>
 </footer>
 `;
 
-export default () =>
+export default (root) =>
 {
     root.insertAdjacentHTML('beforeend', html);
 }
