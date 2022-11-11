@@ -10,6 +10,7 @@ import * as router from './js/router.js';
 import main from './js/main.js';
 import header from './js/header.js';
 import footer from './js/footer.js';
+import menu from "./js/menu";
 
 // Lägger in alla valida-rutter hos routern.
 router.addRoute
@@ -20,9 +21,14 @@ router.addRoute
         page: import('./js/home')
     },
     {
-        path: "/kontakt",
-        title: "Kontakt",
-        page: import('./js/contact')
+        path: "/boka-tid",
+        title: "Boka tid",
+        page: import('./js/booking')
+    },
+    {
+        path: "/logga-in",
+        title: "Logga in",
+        page: import('./js/login')
     },
 );
 
@@ -46,6 +52,23 @@ const update = async () =>
         const page = await result.page;
         documentTitle(result.title);
         page.default(document.getElementById('main').children[0]);
+        currentAnchor(document.querySelectorAll('.header_link'));
+        currentAnchor(document.querySelectorAll('.menu_link'));
+    }
+}
+
+const currentAnchor = (links) =>
+{
+    for (let link of links)
+    {
+        if (link.pathname == window.location.pathname)
+        {
+            link.classList.add('is_current');
+        }
+        else
+        {
+            link.classList.remove('is_current');
+        }
     }
 }
 
@@ -76,6 +99,7 @@ const init = () =>
     document.body.appendChild(root);
 
     header(root);
+    menu(root);
     main(root);
     footer(root);
 }

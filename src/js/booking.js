@@ -1,5 +1,5 @@
 const html = `
-<h1>Kontakt!</h1>
+<h1>Boka tid!</h1>
 `;
 
 export default (main) =>
