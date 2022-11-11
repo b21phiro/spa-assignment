@@ -7,6 +7,10 @@ import './css/layout.css';
 
 // All js importeras här.
 import * as router from './js/router.js';
+import main from './js/main.js';
+import header from './js/header.js';
+import footer from './js/footer.js';
+import menu from "./js/menu";
 
 // Lägger in alla valida-rutter hos routern.
 router.addRoute
@@ -17,9 +21,14 @@ router.addRoute
         page: import('./js/home')
     },
     {
-        path: "/kontakt",
-        title: "Kontakt",
-        page: import('./js/contact')
+        path: "/boka-tid",
+        title: "Boka tid",
+        page: import('./js/booking')
+    },
+    {
+        path: "/logga-in",
+        title: "Logga in",
+        page: import('./js/login')
     },
 );
 
@@ -42,7 +51,24 @@ const update = async () =>
     {
         const page = await result.page;
         documentTitle(result.title);
-        page.default(document.getElementById('main'));
+        page.default(document.getElementById('main').children[0]);
+        currentAnchor(document.querySelectorAll('.header_link'));
+        currentAnchor(document.querySelectorAll('.menu_link'));
+    }
+}
+
+const currentAnchor = (links) =>
+{
+    for (let link of links)
+    {
+        if (link.pathname == window.location.pathname)
+        {
+            link.classList.add('is_current');
+        }
+        else
+        {
+            link.classList.remove('is_current');
+        }
     }
 }
 
@@ -50,9 +76,10 @@ const update = async () =>
 const clearMain = () =>
 {
     const main = document.getElementById('main');
-    while(main.firstChild)
+    const wrapper = main.children[0];
+    while(wrapper.firstChild)
     {
-        main.removeChild(main.lastChild);
+        wrapper.removeChild(wrapper.lastChild);
     }
 }
 
@@ -69,15 +96,12 @@ const init = () =>
     const root = document.createElement('DIV');
           root.id = "root";
 
-    const main = document.createElement('MAIN');
-          main.id = "main";
-
     document.body.appendChild(root);
-    root.appendChild(main);
 
-    root.insertAdjacentHTML(`afterbegin`,`
-        <a href="/" title="Framsida">Framsida</a>
-        <a href="/kontakt" title="Kontakta oss">Kontakt</a>`);
+    header(root);
+    menu(root);
+    main(root);
+    footer(root);
 }
 
 // Initierar SPA genom INIT.
@@ -89,17 +113,7 @@ window.onload = () =>
 
     init();
 
-    document.querySelectorAll('a').forEach(a =>
-    {
-        a.addEventListener('click', (e) =>
-        {
-            e.preventDefault();
-            history.replaceState(null, null, e.target.href);
-            update();
-        })
-    });
-
-    history.pushState(null, null, window.location);
+    history.replaceState(null, null, window.location);
 
     update();
 
@@ -108,6 +122,18 @@ window.onload = () =>
 // I princip: Webbläsar-pilar.
 window.onpopstate = (e) =>
 {
+    e.preventDefault();
+    history.replaceState(null, null, window.location);
     update();
+}
+
+window.onclick = (e) =>
+{
+    if (e.target.tagName == 'A' && e.target.target != '_blank')
+    {
+        e.preventDefault();
+        history.pushState(null, null, new URL(e.target.href));
+        update();
+    }
 }
 

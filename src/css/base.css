@@ -3,4 +3,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Source Sans 3';
+    color: var(--black);
 }
+
+h1,h2,h3,h4,h5,h6
+{
+    font-family: 'Permanent Marker';
+}
+
+body
+{
+    min-height: 100vh;
+}
+
