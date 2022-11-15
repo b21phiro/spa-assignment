@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkspa_assignment=self.webpackChunkspa_assignment||[]).push([[441],{441:(s,e,n)=>{n.r(e),n.d(e,{default:()=>a});const a=s=>{s.insertAdjacentHTML("afterbegin","\n<h1>Framsida!</h1>\n")}}}]);
