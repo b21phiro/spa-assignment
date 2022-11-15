@@ -126,3 +126,141 @@
     align-items: center;
     justify-content: center;
 }
+
+.section
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: clamp(.625rem, 2.5vw, 1rem);
+}
+
+.section_title
+{
+    font-size: clamp(2rem, 2.5vw, 3rem);
+}
+
+.section_text
+{
+    font-size: clamp(1rem, 2.5vw, 1.1875rem);
+}
+
+.form
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: clamp(1rem, 2.5vw, 1.5rem);
+    align-items: center;
+    width: 100%;
+}
+
+.input
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: .625rem;
+    width: 100%;
+}
+
+.input_field
+{
+    padding: .625rem;
+    background-color: var(--light-purple);
+    border-radius: .5rem;
+    border: 2px solid var(--light-purple);
+    font-size: clamp(1rem, 2.5vw, 1.1875rem);
+    font-weight: bold;
+}
+
+.input_label
+{
+    font-size: clamp(.875rem, 2.5vw, 1rem);
+}
+
+.input_notice
+{
+    flex-direction: row;
+    column-gap: clamp(.25rem, 2.5vw, .5rem);
+    align-items: center;
+}
+
+.input_notice .feather
+{
+    stroke: var(--pink);
+    width: clamp(1.1875rem, 2.5vw, 1.5rem);
+}
+
+.input_notice_text
+{
+    font-weight: bold;
+    color: var(--pink);
+    font-size: clamp(.875rem, 2.5vw, 1rem);
+}
+
+.checkbox
+{
+    display: flex;
+    flex-direction: row;
+    column-gap: clamp(.25rem, 2.5vw, .5rem);
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox .feather-check-square
+{
+    stroke: var(--pink);
+}
+
+.button
+{
+    width: fit-content;
+    min-width: 3rem;
+    min-height: 3rem;
+    padding-inline: clamp(1rem, 2.5vw, 1.5rem);
+    font-family: 'Permanent Marker';
+    font-size: clamp(.875rem, 2.5vw, 1rem);
+    cursor: pointer;
+}
+
+.button_solid
+{
+    background-color: var(--pink);
+    border-radius: .5rem;
+    color: var(--white);
+    border: 2px solid var(--pink);
+    transition: transform 150ms, background-color 150ms, border-color 150ms, color 150ms;
+}
+
+.notice
+{
+    column-gap: 1rem;
+    align-items: center;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
+    background-color: var(--pig);
+    border-radius: .5rem;
+    width: 100%;
+}
+
+.notice_symbol
+{
+    width: 2rem;
+    height: 2rem;
+}
+
+.notice_section
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}
+
+.notice_title
+{
+    font-size: clamp(.875rem, 2.5vw, 1rem);
+    font-family: "Source Sans 3";
+    font-weight: bold;
+}
+
+.notice_text
+{
+    font-size: clamp(1rem, 2.5vw, 1.1875rem);
+}

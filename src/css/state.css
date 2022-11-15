@@ -83,6 +83,50 @@
     display: none;
 }
 
+/* Checkbox när den inte är i-checkad */
+.checkbox .feather-check-square,
+.checkbox.is_checked .feather-square
+{
+    display: none;
+}
+
+/* Checkbox när den ÄR i-checkad */
+.checkbox.is_checked .feather-check-square
+{
+    display: block;
+}
+
+.have_error .input_notice
+{
+    display: flex;
+}
+
+.input_notice
+{
+    display: none;
+}
+
+/* Formuläret har fel */
+.have_error .notice
+{
+    display: flex;
+}
+
+/* Formuläret har inget fel */
+.notice
+{
+    display: none;
+}
+
+.button_solid:hover,
+.button_solid:focus-within
+{
+    transform: scale(1.1);
+    background-color: var(--white);
+    border-color: var(--pink);
+    color: var(--pink);
+}
+
 @media (min-width: 600px)
 {
     #menu,

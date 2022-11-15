@@ -11,6 +11,13 @@
     flex: 1;
 }
 
+#main .wrapper
+{
+    display: flex;
+    flex-direction: column;
+    row-gap: clamp(1.5rem, 2.5vw, 2rem);
+}
+
 #footer .wrapper
 {
     text-align: center;
@@ -52,4 +59,13 @@
 #footer
 {
     padding-block: clamp(1rem, 2.5vw, 2rem);
+}
+
+#login
+{
+    max-width: 62rem;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: clamp(1.5rem, 2.5vw, 2rem);
 }
