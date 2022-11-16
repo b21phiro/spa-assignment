@@ -1,5 +1,3 @@
-import * as fetchApi from './fetchApi.js';
-
 const html = `
 <div id="login">
     <section class="section">
@@ -68,10 +66,82 @@ const html = `
 </div>
 `;
 
-const submitForm = async (form) =>
+// Visar felmeddelande under input inom "input_notice" diven.
+// Kräver att input har ett sådant "input_notice" element,
+// annars ger ett falskt resultat.
+// Tar emot ett meddelande med, som printas ut.
+const displayInputError = (input, msg) =>
 {
-    const result = await fetchApi.get('getbookings');
-    console.log(result);
+    const label = input.parentNode;
+    let noticeDIV;
+    for(let child of label.children)
+    {
+        if (child.classList.contains('input_notice'))
+        {
+            noticeDIV = child;
+            break;
+        }
+    }
+    if (!noticeDIV)
+    {
+        console.error("Input does not have an \"input_notice\" div-element!");
+        return false;
+    }
+    label.classList.add('have_error');
+    noticeDIV.children[1].innerText = msg;
+}
+
+// Tar bort "have_error" klassen från input-etiketten.
+const removeInputError = (input) =>
+{
+    input.parentNode.classList.remove('have_error');
+}
+
+// Validerar fel hos alla element som get.
+// Hittas inget, ges resultatet "sant" tillbaka.
+// Hittas det något fel i någon av inmatningarna, ges ett falskt resultat tillbaka.
+// Beroende av "displayInputError" och "removeInputError" funktionerna, för
+// att visa felmeddelanden hos inmatningarnas felrutor.
+const validateFormElements = (elements) =>
+{
+
+    let result = true;
+
+    const email_regexp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g);
+    const tel_regexp = new RegExp(/^((((0{2}?)|(\+){1})46)|0)7[\d]{8}/g);
+
+    for (let input of elements)
+    {
+        switch (input.type)
+        {
+            case 'email':
+                if (!email_regexp.test(input.value))
+                {
+                    result = false;
+                    displayInputError(input, "Nja, tror inte riktigt på den där mejladressen.");
+                }
+                else
+                {
+                    removeInputError(input);
+                }
+                break;
+            case 'tel':
+                if (!tel_regexp.test(input.value))
+                {
+                    result = false;
+                    displayInputError(input, "Hmm, ser inte ut att vara ett kontaktbart nummer!");
+                }
+                else
+                {
+                    removeInputError(input);
+                }
+                break;
+            default:
+                continue;
+                break;
+        }
+    }
+    return result;
 }
 
 export default (main) =>
@@ -94,7 +164,16 @@ export default (main) =>
     document.getElementById('loginForm').onsubmit = (e) =>
     {
         e.preventDefault();
-        const result = submitForm(e.target);
+        const form = e.target;
+        const result = validateFormElements(form.elements);
+        if (!result)
+        {
+            console.log("FAIL");
+        }
+        else
+        {
+            alert("SUBMIT");
+        }
     }
 
 }

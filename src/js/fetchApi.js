@@ -1,11 +1,17 @@
 const api =
 {
-    server: './../backend/booking/'
+    server: './Webbprogrammering-Examples-master/booking'
 };
 
 const get = (endpoint) =>
 {
-    return fetch(`${api.server}${endpoint}_XML.php`);
+    try
+    {
+        return fetch(`${api.server}${endpoint}_XML.php`);
+    } catch(exception)
+    {
+        return console.error(exception);
+    }
 }
 
 export { get };
