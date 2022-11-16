@@ -1,10 +1,12 @@
+import * as fetchApi from './fetchApi.js';
+
 const html = `
 <div id="login">
     <section class="section">
         <h1 class="section_title">Logga in</h1>
         <p class="section_text">Som inloggad användare kan du boka tider hos oss snabbt och enkelt!</p>    
     </section>
-    <form class="form" method="post">
+    <form id="loginForm" class="form" method="post">
     
         <div class="notice">
             <svg class="notice_symbol feather feather-alert-triangle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -66,6 +68,12 @@ const html = `
 </div>
 `;
 
+const submitForm = async (form) =>
+{
+    const result = await fetchApi.get('getbookings');
+    console.log(result);
+}
+
 export default (main) =>
 {
     main.insertAdjacentHTML('afterbegin', html);
@@ -82,5 +90,11 @@ export default (main) =>
             document.getElementById('checkboxLabel').classList.remove('is_checked');
         }
     });
+
+    document.getElementById('loginForm').onsubmit = (e) =>
+    {
+        e.preventDefault();
+        const result = submitForm(e.target);
+    }
 
 }
