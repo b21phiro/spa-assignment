@@ -9,15 +9,6 @@
     height: 1.5rem;
 }
 
-.button
-{
-    width: 3rem;
-    height: 3rem;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-}
-
 .author
 {
     font-family: 'Permanent Marker';
@@ -212,6 +203,16 @@
 
 .button
 {
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.button_text,
+.button_solid
+{
     width: fit-content;
     min-width: 3rem;
     min-height: 3rem;
@@ -219,6 +220,10 @@
     font-family: 'Permanent Marker';
     font-size: clamp(.875rem, 2.5vw, 1rem);
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .button_solid
@@ -261,6 +266,16 @@
 }
 
 .notice_text
+{
+    font-size: clamp(1rem, 2.5vw, 1.1875rem);
+}
+
+.page_title
+{
+    font-size: clamp(2rem, 2.5vw, 3rem);
+}
+
+.page_text
 {
     font-size: clamp(1rem, 2.5vw, 1.1875rem);
 }
