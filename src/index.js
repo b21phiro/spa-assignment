@@ -30,6 +30,11 @@ router.addRoute
         title: "Logga in",
         page: import('./js/login')
     },
+    {
+        path: "/logga-ut",
+        title: "Logga ut",
+        page: import('./js/logout')
+    },
 );
 
 // Uppdaterar sidan beroende på URL.

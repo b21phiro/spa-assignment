@@ -8,7 +8,8 @@ const html = `
         <nav class="header_nav">
             <a class="header_link" href="/" title="Hem">Hem</a>
             <a class="header_link" href="/boka-tid">Boka</a>
-            <a class="header_link" href="logga-in" title="Logga in">Logga in</a>
+            <a id="anchor_login" class="header_link" href="logga-in" title="Logga in">Logga in</a>
+            <a id="anchor_logout" class="header_link" href="logga-ut" title="Logga ut">Logga ut</a>
         </nav>
         <button id="menuButton" class="button" type="button">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="feather feather-menu">
@@ -20,6 +21,22 @@ const html = `
     </div>
 </header>
 `;
+
+const inSession = () =>
+{
+    document.getElementById('anchor_login')
+        .style.display = 'none';
+    document.getElementById('anchor_logout')
+        .style.display = 'inline-flex';
+}
+
+const notInSession = () =>
+{
+    document.getElementById('anchor_login')
+        .style.display = 'inline-flex';
+    document.getElementById('anchor_logout')
+        .style.display = 'none';
+}
 
 const clickAnimation = (elem) =>
 {
@@ -39,4 +56,13 @@ export default (root) =>
         {
             clickAnimation(document.getElementById('menuButton'));
         });
+
+    if (sessionStorage.getItem('id'))
+    {
+        inSession();
+    }
+    else
+    {
+        notInSession();
+    }
 }

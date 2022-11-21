@@ -275,7 +275,17 @@
     font-size: clamp(2rem, 2.5vw, 3rem);
 }
 
+.page_title > *
+{
+    font-family: "Permanent Marker";
+}
+
 .page_text
 {
     font-size: clamp(1rem, 2.5vw, 1.1875rem);
+}
+
+.highlight
+{
+    color: var(--pink);
 }

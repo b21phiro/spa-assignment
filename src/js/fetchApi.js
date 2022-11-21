@@ -1,6 +1,6 @@
 const api =
 {
-    server: './Webbprogrammering-Examples-master/booking'
+    server: 'http://localhost/Webbprogrammering-Examples-master/booking/'
 };
 
 const get = (endpoint) =>

@@ -21,7 +21,7 @@ const html = `
         <!--Mejl address-->
         <label class="input">
             <p class="input_label">Mejl address</p>
-            <input class="input_field" type="email" name="email" title="Email"/>
+            <input id="email" class="input_field" type="email" name="email" title="Email"/>
             <div class="input_notice">
                 <svg class="feather feather-alert-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -35,7 +35,7 @@ const html = `
         <!--Mobilnummer-->
         <label class="input">
             <p class="input_label">Mobilnummer</p>
-            <input class="input_field" type="tel" name="tel" title="Mobilnummer"/>
+            <input id="tel" class="input_field" type="tel" name="tel" title="Mobilnummer"/>
             <div class="input_notice">
                 <svg class="feather feather-alert-circle" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -172,7 +172,11 @@ export default (main) =>
         }
         else
         {
-            alert("SUBMIT");
+            // Sets item to sessionStorage.
+            sessionStorage.setItem("id", "001");
+            sessionStorage.setItem("name", "Stefan");
+            history.replaceState(null, null, '/');
+            return location.reload();
         }
     }
 
